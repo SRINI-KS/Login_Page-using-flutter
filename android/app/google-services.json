@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "388899723974",
+    "project_id": "viploginui",
+    "storage_bucket": "viploginui.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388899723974:android:acfb5b8449078383b795c7",
+        "android_client_info": {
+          "package_name": "com.example.vip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388899723974-amrlbac29u45ifv5otjbeue9bostga84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALooRF5Wlk5J6rZRmTm4MRvps7uW2rNd8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388899723974-amrlbac29u45ifv5otjbeue9bostga84.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

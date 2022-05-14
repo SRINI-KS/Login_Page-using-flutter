@@ -1,4 +1,6 @@
-// ignore_for_file: non_constant_identifier_names, deprecated_member_use, duplicate_ignore, unnecessary_import, body_might_complete_normally_nullable
+// ignore_for_file: non_constant_identifier_names, deprecated_member_use, duplicate_ignore, unnecessary_import, body_might_complete_normally_nullable, unused_import
+
+import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,16 +23,15 @@ class loginscreen extends StatefulWidget {
 class _loginscreenState extends State<loginscreen> {
   late String _Email, _Password;
 
-  voidsignin() async* {
-    await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: _Email, password: _Password)
-        .catchError((onError) {
-      print(onError);
-    }).then((authUser) {
-      print(authUser.user!);
-      // FfXkwpjf2HgPzMrH7zF5iHKZ0V92
-    });
-  }
+  Future<void> signIn(BuildContext context) async => await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: _Email, password: _Password)
+          .catchError((onError) {
+        print(onError);
+      }).then((authUser) {
+        if (authUser.user != null)
+          Navigator.push(
+              context, MaterialPageRoute(builder: ((context) => Homescreen())));
+      });
 
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
@@ -190,19 +191,19 @@ class _loginscreenState extends State<loginscreen> {
                           onPressed: () {
                             if (formkey.currentState!.validate()) {
                               formkey.currentState!.save();
-                              signIn();
-                              // if (_Email == 'srini@gmail.com' &&
-                              //     _Password == '12345678') {
-                              //   FocusScope.of(context).unfocus();
-                              //   Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //       builder: (context) => Homescreen(),
-                              //     ),
-                              //   );
-                              // } else {
-                              //   print('invalid login detials');
-                              // }
+                              signIn(context);
+                              //   if (_Email == 'srini@gmail.com' &&
+                              //       _Password == '12345678') {
+                              //     FocusScope.of(context).unfocus();
+                              //     Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //         builder: (context) => Homescreen(),
+                              //       ),
+                              //     );
+                              //   } else {
+                              //     print('invalid login detials');
+                              //   }
                             }
                           },
                           child: Text(
@@ -238,6 +239,4 @@ class _loginscreenState extends State<loginscreen> {
       ),
     );
   }
-
-  void signIn() {}
 }

@@ -10,6 +10,7 @@ class Homescreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('home'),
         ),
+        body: Center(child: Text("Welcome !")),
       ),
     );
   }
